@@ -10,7 +10,9 @@
     "lint:js": "eslint ./src/**/*.js",
     "lint:css": "stylelint ./src/*.{css,scss}",
     "lintFix:js": "eslint ./src/**/*.js --fix",
-    "lintFix:css": "stylelint ./src/*.{css,scss} --fix"
+    "lintFix:css": "stylelint ./src/*.{css,scss} --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
+    "@types/jest": "^27.4.1",
     "autoprefixer": "^10.4.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
@@ -34,6 +37,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.4",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.5.3",
     "postcss": "^8.4.7",
     "postcss-loader": "^6.2.1",
