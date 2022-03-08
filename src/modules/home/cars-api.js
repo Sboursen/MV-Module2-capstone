@@ -23,19 +23,18 @@ export default class CarsApi {
     return data;
   };
 
-  #formatData = (data) => {
-    return data.map((obj) => {
-      const car = new Car(
-        obj['year'],
-        obj['id'],
-        obj['horsepower'],
-        obj['make'],
-        obj['model'],
-        obj['price'],
-        obj['imgUrl'],
-      );
+  #formatData = (data) =>
+    data.map((obj) => {
+      const car = new Car();
+      car.year = obj['year'];
+      car.id = obj['id'];
+      car.horsepower = obj['horsepower'];
+      car.make = obj['make'];
+      car.model = obj['model'];
+      car.price = obj['price'];
+      car.imgUrl = obj['img_url'];
+      return car;
     });
-  };
 
   getCarById = async (id) => {
     const url = this.#getCarEndpointFromId(id);
@@ -45,7 +44,8 @@ export default class CarsApi {
         'Content-type': 'application/json',
       },
     });
-    const data = await response.json();
+    let data = await response.json();
+    data = await this.#formatData(data);
     return data;
   };
 }

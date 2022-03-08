@@ -10,6 +10,17 @@ export default class HomeApplication {
     this.main = document.querySelector('main');
   }
 
+  initialize = () => {
+    this.getAllCars();
+  };
+
+  getAllCars = () =>
+    this.carsApi.getAllCars().then((data) => {
+      this.carsData = data;
+      const toBeDisplayed = this.carsData.slice(0, 12);
+      this.#displayCars(toBeDisplayed);
+    });
+
   #clearMain = () => {
     this.main.innerHTML = '';
   };
@@ -19,17 +30,13 @@ export default class HomeApplication {
 
   #displayCars = (toBeDisplayed) => {
     this.#clearMain();
-    const ulContent = toBeDisplayed.reduce(
-      (content, userScore) => {
-        const score = new Score(
-          userScore.user,
-          userScore.score,
-        );
-        const scoreElement = this.#createCarElement(score);
-        return `${content}\n${scoreElement}`;
+    const mainContent = toBeDisplayed.reduce(
+      (content, car) => {
+        const carElement = this.#createCarElement(car);
+        return `${content}\n${carElement}`;
       },
       '',
     );
-    this.main.innerHTML = ulContent;
+    this.main.innerHTML = mainContent;
   };
 }
