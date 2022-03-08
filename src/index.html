@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" crossorigin="anonymous" />
     <title>Webpack Exercise</title>
   </head>
 
@@ -27,7 +28,22 @@
         </ul>
       </nav>
     </header>
-
+    <!-- comment popup -->
+    <div
+      id="OpenModal"
+      class="px-10 py-5 h-5 w-5 text-center cursor-pointer bg-slate-900 text-white"
+    >
+      Open Modal
+    </div>
+    <section
+      class="w-full h-full popup-bg pt-28 z-10 top-0 left-0 fixed overflow-auto hidden"
+      id="modal-container"
+    >
+      <div class="relative w-96 h-40 m-auto bg-slate-100" id="modal">
+        <h2>Content lorem lorem lorem</h2>
+      </div>
+    </section>
+    <!-- comment popup -->
     <footer
       class="flex justify-start col-span-full w-full px-5 mx-0 bg-sky-700 h-12 row-start-3 row-end-4"
     >
