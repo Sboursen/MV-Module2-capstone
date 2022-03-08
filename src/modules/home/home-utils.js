@@ -26,4 +26,11 @@ export const carRender = (
       </div>
     </div>`;
 
-export const placeholder = 12;
+export function fileExists(imageUrl) {
+  const http = new XMLHttpRequest();
+
+  http.open('HEAD', imageUrl, false);
+  http.send();
+
+  return Number(http.status) !== 404;
+}
