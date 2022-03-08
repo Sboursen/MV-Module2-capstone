@@ -1,3 +1,5 @@
+import Car from './car';
+
 export default class CarsApi {
   constructor(
     url = 'https://private-anon-66fbb79774-carsapi1.apiary-mock.com/',
@@ -16,8 +18,23 @@ export default class CarsApi {
         'Content-Type': 'application/json',
       },
     });
-    const data = await response.json();
+    let data = await response.json();
+    data = await this.#formatData(data);
     return data;
+  };
+
+  #formatData = (data) => {
+    return data.map((obj) => {
+      const car = new Car(
+        obj['year'],
+        obj['id'],
+        obj['horsepower'],
+        obj['make'],
+        obj['model'],
+        obj['price'],
+        obj['imgUrl'],
+      );
+    });
   };
 
   getCarById = async (id) => {
