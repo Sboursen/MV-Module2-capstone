@@ -1,5 +1,4 @@
-// import reservationData from './reservations-data.js';
-import { setReservationToAPI, getReservationsFromAPI } from '';
+import { getReservationsFromAPI, setReservationToAPI } from './getPostInvolvementAPI';
 
 const reservationsPopUp = document.querySelector('.reservations-container');
 const mainPopUp = document.querySelector('.main-pop-up');
