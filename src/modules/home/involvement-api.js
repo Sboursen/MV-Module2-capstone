@@ -6,9 +6,6 @@ export default class InvolvementApi {
     this.rootEndpoint = url;
     this.likesEndpoint = `${url}${this.projectId}/likes/`;
     this.likesData = this.#getLikes();
-    // this.setLikesData({
-    //   item_id: 'item1',
-    // });
   }
 
   getLikesData = () => this.likesData;
