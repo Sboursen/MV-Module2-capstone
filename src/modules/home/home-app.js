@@ -1,5 +1,9 @@
 import CarsApi from './cars-api';
-import { carRender } from './home-utils';
+import {
+  carRender,
+  likeClass,
+  unlikeClass,
+} from './home-utils';
 import InvolvementApi from './involvement-api';
 
 export default class HomeApplication {
@@ -47,6 +51,17 @@ export default class HomeApplication {
       '',
     );
     this.main.innerHTML = mainContent;
+  };
+
+  toggleHeart = (e) => {
+    console.log(e.currentTarget);
+    if (e.currentTarget.classList.contains('heart')) {
+      if (e.currentTarget.className === likeClass) {
+        e.currentTarget.className = unlikeClass;
+      } else {
+        e.currentTarget.className = likeClass;
+      }
+    }
   };
 
   #updateLikes = () => {

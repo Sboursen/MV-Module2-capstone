@@ -5,10 +5,8 @@ export default class InvolvementApi {
     this.projectId = '2C4jJFKraIvaxjrsdqH5';
     this.rootEndpoint = url;
     this.likesEndpoint = `${url}${this.projectId}/likes/`;
+    console.log(`${url}${this.projectId}/reservations/`);
     this.likesData = this.#getLikes();
-    this.setLikesData({ item_id: 7 })
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
   }
 
   getLikesData = () => this.likesData;
