@@ -1,11 +1,12 @@
 import './style.css';
+import HomeApplication from './modules/home/home-app';
+import showCommentModal from './modules/comments/comments-app';
 
 const homeApp = new HomeApplication();
-homeApp.initialize();
+homeApp.initialize().then(() => {
+  const commentButtons = document.querySelectorAll(
+    '.car-buttons > .comment-button',
+  );
 
-const modalContainer = document.querySelector('#modal-container');
-const modal = document.querySelector('#modal');
-
-import HomeApplication from './modules/home/home-app';
-
-const open = document.querySelectorAll('.car-buttons.comment-button');
+  commentButtons.forEach((btn) => btn.addEventListener('click', showCommentModal));
+});
