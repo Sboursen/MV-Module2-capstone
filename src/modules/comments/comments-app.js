@@ -1,12 +1,11 @@
 import CarsApi from '../home/cars-api';
+
 const carApi = new CarsApi();
 
-export default function showCommentModal(e) {
-  const id = Number(e.target.parentNode.parentNode.id);
-  console.log(id);
-  carApi.getDataPromise().then((data) => {
-    console.log(data[id].model);
+export default function showCommentModal() {
+  // const id = Number(e.target.parentNode.parentNode.id);
 
+  carApi.getDataPromise().then(() => {
     // div.textContent = data[id].modal;
   });
 }

@@ -7,8 +7,6 @@ homeApp.initialize().then(() => {
   const commentButtons = document.querySelectorAll(
     '.car-buttons > .comment-button',
   );
-  console.log(commentButtons);
-  commentButtons.forEach((btn) =>
-    btn.addEventListener('click', showCommentModal),
-  );
+
+  commentButtons.forEach((btn) => btn.addEventListener('click', showCommentModal));
 });
