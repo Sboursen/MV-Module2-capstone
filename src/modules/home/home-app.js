@@ -9,9 +9,7 @@ export default class HomeApplication {
     this.main = document.querySelector('main');
   }
 
-  initialize = () => {
-    this.getANumberOfCars(12);
-  };
+  initialize = () => this.getANumberOfCars(12);
 
   getAllCars = () => this.carsApi.getAllCars().then((data) => {
     this.carsData = data.filter((car) => fileExists(car.imgUrl));
@@ -32,6 +30,8 @@ export default class HomeApplication {
         break;
       }
     }
+
+    return data;
   });
 
   #clearMain = () => {
