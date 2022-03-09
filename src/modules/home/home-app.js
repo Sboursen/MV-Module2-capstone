@@ -62,7 +62,6 @@ export default class HomeApplication {
   #updateLikes = () => {
     this.involvementApi.getLikesData().then((data) => {
       const likesElements = document.querySelectorAll('.likes');
-
       likesElements.forEach((like) => {
         const { id } = like.parentNode.parentNode.parentNode.parentNode;
         let numberOfLikes = data.find(

@@ -17,7 +17,7 @@ export const carRender = (
         <h2>${make} ${model}</h2>
         <div class="flex flex-col items-center text-red-600">
           <i class="${unlikeClass}"></i>
-          <span class="text-black"><span class="like">${likes}</span> likes</span>
+          <span class="text-black"><span class="likes">${likes}</span> likes</span>
         </div>
       </div>
       <div class="car-buttons flex flex-col gap-3 p-2 ">
