@@ -16,30 +16,26 @@ export default class HomeApplication {
     this.involvementApi = new InvolvementApi();
   }
 
-  initialize = () =>
-    this.getAllCars().then(() => this.#updateLikes());
+  initialize = () => this.getAllCars().then(() => this.#updateLikes());
 
-  getAllCars = () =>
-    this.carsApi.getAllCars().then((data) => {
-      this.#displayCars(data);
-      return data;
-    });
+  getAllCars = () => this.carsApi.getAllCars().then((data) => {
+    this.#displayCars(data);
+    return data;
+  });
 
-  getANumberOfCars = (number) =>
-    this.carsApi.getAllCars().then((data) => {
-      const toBeDisplayed = data.slice(number);
+  getANumberOfCars = (number) => this.carsApi.getAllCars().then((data) => {
+    const toBeDisplayed = data.slice(number);
 
-      this.#displayCars(toBeDisplayed);
+    this.#displayCars(toBeDisplayed);
 
-      return data;
-    });
+    return data;
+  });
 
   #clearMain = () => {
     this.main.innerHTML = '';
   };
 
-  #createCarElement = (car) =>
-    carRender(car.id, car.imgUrl, car.make, car.model);
+  #createCarElement = (car) => carRender(car.id, car.imgUrl, car.make, car.model);
 
   #displayCars = (toBeDisplayed) => {
     this.#clearMain();
@@ -54,7 +50,6 @@ export default class HomeApplication {
   };
 
   toggleHeart = (e) => {
-    console.log(e.currentTarget);
     if (e.currentTarget.classList.contains('heart')) {
       if (e.currentTarget.className === likeClass) {
         e.currentTarget.className = unlikeClass;
@@ -66,14 +61,10 @@ export default class HomeApplication {
 
   #updateLikes = () => {
     this.involvementApi.getLikesData().then((data) => {
-      console.log(data);
-      const likesElements =
-        document.querySelectorAll('.likes');
+      const likesElements = document.querySelectorAll('.likes');
 
       likesElements.forEach((like) => {
-        const id =
-          like.parentNode.parentNode.parentNode.parentNode
-            .id;
+        const { id } = like.parentNode.parentNode.parentNode.parentNode;
         let numberOfLikes = data.find(
           (e) => Number(e.item_id) === Number(id),
         );

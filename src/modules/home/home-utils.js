@@ -8,12 +8,12 @@ export const carRender = (
   likes = 0,
 ) => `<div
       class="car-card flex flex-col gap-2 border-4 rounded-md border-violet-600" id="${id}">
-      <div class="car-img flex items-center h-40">
+      <div class="car-img h-50 object-cover">
         <img class="w-full"
           src="${imgUrl}"
           alt="${make} ${model}">
       </div>
-      <div class="car-info flex justify-between p-2">
+      <div class="car-info flex justify-between p-2 mt-auto">
         <h2>${make} ${model}</h2>
         <div class="flex flex-col items-center text-red-600">
           <i class="${unlikeClass}"></i>

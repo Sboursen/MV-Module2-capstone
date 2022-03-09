@@ -8,9 +8,7 @@ export default class CarsApi {
     this.rootEndpoint = url;
     this.allCarsEndpoint = `${url}cars`;
     this.goodCarsId = goodCarsId;
-    this.dataPromise = this.getAllCars().then((data) =>
-      this.#formatCars(data),
-    );
+    this.dataPromise = this.getAllCars().then((data) => this.#formatCars(data));
   }
 
   getDataPromise = () => this.dataPromise;
@@ -25,21 +23,19 @@ export default class CarsApi {
     return dataObj;
   };
 
-  getCarEndpointFromId = (id) =>
-    `${this.allCarsEndpoint}/${id}`;
+  getCarEndpointFromId = (id) => `${this.allCarsEndpoint}/${id}`;
 
-  #formatData = (data) =>
-    data.map((obj) => {
-      const car = new Car();
-      car.year = obj.year;
-      car.id = obj.id;
-      car.horsepower = obj.horsepower;
-      car.make = obj.make;
-      car.model = obj.model;
-      car.price = obj.price;
-      car.imgUrl = obj.img_url;
-      return car;
-    });
+  #formatData = (data) => data.map((obj) => {
+    const car = new Car();
+    car.year = obj.year;
+    car.id = obj.id;
+    car.horsepower = obj.horsepower;
+    car.make = obj.make;
+    car.model = obj.model;
+    car.price = obj.price;
+    car.imgUrl = obj.img_url;
+    return car;
+  });
 
   getAllCars = async (url = this.allCarsEndpoint) => {
     const response = await fetch(url, {
@@ -51,9 +47,7 @@ export default class CarsApi {
 
     let data = await response.json();
 
-    data = data.filter((obj) =>
-      this.goodCarsId.includes(obj.id),
-    );
+    data = data.filter((obj) => this.goodCarsId.includes(obj.id));
 
     data = await this.#formatData(data);
 
