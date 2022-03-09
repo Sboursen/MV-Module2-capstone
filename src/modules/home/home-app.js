@@ -1,35 +1,32 @@
 import CarsApi from './cars-api';
-import { carRender, fileExists } from './home-utils';
+import {
+  carRender,
+  likeClass,
+  unlikeClass,
+} from './home-utils';
+import InvolvementApi from './involvement-api';
 
 export default class HomeApplication {
   constructor() {
-    this.carsData = [];
     this.carsApi = new CarsApi();
+
     // DOM elements
     this.main = document.querySelector('main');
+
+    this.involvementApi = new InvolvementApi();
   }
 
-  initialize = () => this.getANumberOfCars(12);
+  initialize = () => this.getAllCars().then(() => this.#updateLikes());
 
   getAllCars = () => this.carsApi.getAllCars().then((data) => {
-    this.carsData = data.filter((car) => fileExists(car.imgUrl));
-    this.#displayCars(this.carsData);
+    this.#displayCars(data);
+    return data;
   });
 
   getANumberOfCars = (number) => this.carsApi.getAllCars().then((data) => {
-    const toBeDisplayed = [];
+    const toBeDisplayed = data.slice(number);
 
-    for (let i = 0; i < data.length; i += 1) {
-      const car = data[i];
-      if (fileExists(car.imgUrl)) {
-        toBeDisplayed.push(car);
-      }
-
-      if (toBeDisplayed.length === number) {
-        this.#displayCars(toBeDisplayed);
-        break;
-      }
-    }
+    this.#displayCars(toBeDisplayed);
 
     return data;
   });
@@ -50,5 +47,42 @@ export default class HomeApplication {
       '',
     );
     this.main.innerHTML = mainContent;
+  };
+
+  toggleHeart = (e) => {
+    if (e.currentTarget.classList.contains('heart')) {
+      const heartButton = e.currentTarget;
+      const heartCount = heartButton.nextSibling.nextSibling.firstChild;
+      const { id } = heartButton.parentNode.parentNode.parentNode;
+      const data = {};
+      data.item_id = Number(id);
+
+      if (heartButton.className === likeClass) {
+        heartButton.className = unlikeClass;
+        heartCount.textContent = +heartCount.textContent - 1;
+      } else {
+        heartButton.className = likeClass;
+        heartCount.textContent = +heartCount.textContent + 1;
+        this.involvementApi.setLikesData(data);
+      }
+    }
+  };
+
+  #updateLikes = () => {
+    this.involvementApi.getLikesData().then((data) => {
+      const likesElements = document.querySelectorAll('.likes');
+      likesElements.forEach((like) => {
+        const { id } = like.parentNode.parentNode.parentNode.parentNode;
+        let numberOfLikes = data.find(
+          (e) => Number(e.item_id) === Number(id),
+        );
+        if (numberOfLikes === undefined) {
+          numberOfLikes = 0;
+        } else {
+          numberOfLikes = numberOfLikes.likes;
+        }
+        like.textContent = numberOfLikes;
+      });
+    });
   };
 }
