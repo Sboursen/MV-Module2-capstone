@@ -15,5 +15,6 @@ export default class Car {
     this.model = model;
     this.price = price;
     this.imgUrl = imgUrl;
+    this.like = false;
   }
 }

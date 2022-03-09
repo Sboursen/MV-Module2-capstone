@@ -5,6 +5,16 @@ import showReservationModal from './modules/reservations/reservation-app';
 import { setReservedToAPI, getDataFromInvolvementAPI} from './modules/reservations/involvementAPI';
 
 const homeApp = new HomeApplication();
+
+function registerHomeEvents() {
+  const likesbuttons = document.querySelectorAll('.heart');
+
+  likesbuttons.forEach((likebutton) => likebutton.addEventListener(
+    'click',
+    homeApp.toggleHeart,
+  ));
+}
+
 homeApp.initialize().then(() => {
   const commentButtons = document.querySelectorAll(
     '.car-buttons > .comment-button',
@@ -15,6 +25,9 @@ homeApp.initialize().then(() => {
   const reservationButtons = document.querySelectorAll('.reservation-button');
 
   reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
+
+  registerHomeEvents();
+
 });
 
 getDataFromInvolvementAPI('item1');
