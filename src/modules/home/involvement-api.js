@@ -2,10 +2,13 @@ export default class InvolvementApi {
   constructor(
     url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/',
   ) {
-    this.projectId = '2C4jJFKraIvaxjrsdqH5';
+    this.projectId = '0fIC503i0qOW3Z58w8Vo';
     this.rootEndpoint = url;
     this.likesEndpoint = `${url}${this.projectId}/likes/`;
     this.likesData = this.#getLikes();
+    // this.setLikesData({
+    //   item_id: 'item1',
+    // });
   }
 
   getLikesData = () => this.likesData;
