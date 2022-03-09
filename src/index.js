@@ -27,7 +27,6 @@ homeApp.initialize().then(() => {
   reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
 
   registerHomeEvents();
-
 });
 
 getDataFromInvolvementAPI('item1');
