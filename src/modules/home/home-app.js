@@ -51,10 +51,19 @@ export default class HomeApplication {
 
   toggleHeart = (e) => {
     if (e.currentTarget.classList.contains('heart')) {
-      if (e.currentTarget.className === likeClass) {
-        e.currentTarget.className = unlikeClass;
+      const heartButton = e.currentTarget;
+      const heartCount = heartButton.nextSibling.nextSibling.firstChild;
+      const { id } = heartButton.parentNode.parentNode.parentNode;
+      const data = {};
+      data.item_id = Number(id);
+
+      if (heartButton.className === likeClass) {
+        heartButton.className = unlikeClass;
+        heartCount.textContent = +heartCount.textContent - 1;
       } else {
-        e.currentTarget.className = likeClass;
+        heartButton.className = likeClass;
+        heartCount.textContent = +heartCount.textContent + 1;
+        this.involvementApi.setLikesData(data);
       }
     }
   };
