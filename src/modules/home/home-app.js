@@ -1,47 +1,41 @@
 import CarsApi from './cars-api';
-import { carRender, fileExists } from './home-utils';
+import { carRender } from './home-utils';
 
 export default class HomeApplication {
   constructor() {
-    this.carsData = [];
     this.carsApi = new CarsApi();
+
     // DOM elements
     this.main = document.querySelector('main');
   }
 
-  initialize = () => this.getANumberOfCars(12);
+  initialize = () => this.getAllCars();
 
-  getAllCars = () => this.carsApi.getAllCars().then((data) => {
-    this.carsData = data.filter((car) => fileExists(car.imgUrl));
-    this.#displayCars(this.carsData);
-  });
+  getAllCars = () =>
+    this.carsApi.getAllCars().then((data) => {
+      this.#displayCars(data);
+      return data;
+    });
 
-  getANumberOfCars = (number) => this.carsApi.getAllCars().then((data) => {
-    const toBeDisplayed = [];
+  getANumberOfCars = (number) =>
+    this.carsApi.getAllCars().then((data) => {
+      const toBeDisplayed = data.slice(number);
 
-    for (let i = 0; i < data.length; i += 1) {
-      const car = data[i];
-      if (fileExists(car.imgUrl)) {
-        toBeDisplayed.push(car);
-      }
+      this.#displayCars(toBeDisplayed);
 
-      if (toBeDisplayed.length === number) {
-        this.#displayCars(toBeDisplayed);
-        break;
-      }
-    }
-
-    return data;
-  });
+      return data;
+    });
 
   #clearMain = () => {
     this.main.innerHTML = '';
   };
 
-  #createCarElement = (car) => carRender(car.id, car.imgUrl, car.make, car.model);
+  #createCarElement = (car) =>
+    carRender(car.id, car.imgUrl, car.make, car.model);
 
   #displayCars = (toBeDisplayed) => {
     this.#clearMain();
+    console.log('to be disp', toBeDisplayed);
     const mainContent = toBeDisplayed.reduce(
       (content, car) => {
         const carElement = this.#createCarElement(car);
