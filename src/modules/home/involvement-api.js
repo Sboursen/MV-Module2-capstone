@@ -6,10 +6,9 @@ export default class InvolvementApi {
     this.rootEndpoint = url;
     this.likesEndpoint = `${url}${this.projectId}/likes/`;
     this.likesData = this.#getLikes();
-    // this.#getLikes().then((data) => console.log(data));
-    // this.#addLike()
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.log(error));
+    this.setLikesData({ item_id: 7 })
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   }
 
   getLikesData = () => this.likesData;
@@ -17,6 +16,7 @@ export default class InvolvementApi {
   setLikesData = (bodyData) => {
     this.#addLike(this.likesEndpoint, bodyData);
     this.likesData = this.#getLikes();
+    return this.likesData;
   };
 
   #getLikes = async (url = this.likesEndpoint) => {
@@ -30,10 +30,7 @@ export default class InvolvementApi {
     return response.json();
   };
 
-  #addLike = async (
-    url = this.likesEndpoint,
-    bodyData = { item_id: 2 },
-  ) => {
+  #addLike = async (url = this.likesEndpoint, bodyData) => {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
