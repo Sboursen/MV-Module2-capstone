@@ -2,7 +2,7 @@ import './style.css';
 import HomeApplication from './modules/home/home-app';
 import showCommentModal from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
-import { setReservedToAPI, getDataFromInvolvementAPI} from './modules/reservations/involvementAPI';
+import { getDataFromInvolvementAPI } from './modules/reservations/involvementAPI';
 
 const homeApp = new HomeApplication();
 homeApp.initialize().then(() => {

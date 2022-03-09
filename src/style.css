@@ -5,26 +5,18 @@
 @tailwind utilities;
 
 .reservation-container {
-    display: none;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(100, 88, 88, 0.9);
-    backdrop-filter: blur(10px);
-    overflow-y: scroll;
-    z-index: 1;
-    box-sizing: border-box;
-  }
+  display: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(100 88 88 / 90%);
+  backdrop-filter: blur(10px);
+  overflow-y: scroll;
+  z-index: 1;
+  box-sizing: border-box;
+}
 
-  .reservation-container.on {
-      display: block;
-  }
-
-  .close {
-
-  }
-
-  h2.description {
-      
-  }
+.reservation-container.on {
+  display: block;
+}
