@@ -19,7 +19,8 @@ const saveReservationToApi = (e) => {
     '#startDateInput',
   );
 
-  const endDateInput = document.querySelector('#endDateInput');
+  const endDateInput =
+    document.querySelector('#endDateInput');
 
   const dataBody = {
     item_id: id,
@@ -45,30 +46,33 @@ export default function showReservationModal(e) {
     const car = data[id];
 
     reservationsPopUp.innerHTML = `
-    <div class="reservation-content car-card bg-white flex flex-col gap-2 border-4 rounded-md border-violet-600" id="${id}">
-    <div class='flex justify-between'>
+    <div class="reservation-content m-4 car-card bg-white flex flex-col gap-2 border-4 rounded-md border-violet-600" id="${id}">
+    <div class='flex relative justify-between'>
      <img class="flex-1 bg-contain w-78" src=${car.imgUrl}>
-     <span class='flex-1 close text-2xl'> X </span>
+     <button class='close absolute top-2 right-2 text-2xl rounded-full px-2 border-violet-700 hover:border-red-500 hover:text-red-500 border-4 bg-white'> X </button>
     </div>
-    <h2 class='description'>${car.model} ${car.year}</h2>
-    <div>
+    <h2 class='description ml-3'>${car.make.toUpperCase()}</h2>
+    <div class="ml-3">
       <div class=' flex justify-around'>
-       <p class='make '>Model: ${car.model}</p>
-       <p class='model'>Year: ${car.year}</p>
+       <p class='make '>Make: ${car.make.toUpperCase()}</p>
+       <p class='make '>Model: ${car.model.toUpperCase()}</p>
       </div>
       <div class='flex justify-around' >
-       <p class='horsepower'>Horsepower: ${car.horsepower}</p>
+       <p class='horsepower'>Year: ${car.year}</p>
        <p class='price'>Price: ${car.price}</p>
       </div>
+      <div class='flex justify-around' >
+       <p class='horsepower'>Horsepower: ${
+         car.horsepower
+       }</p>
+      </div>
     </div>
-    <div class="reserved-cars-container">
+    <div class="reserved-cars-container ml-3">
      <h2 class= "reserved-cars-title"> Reservations <span id="counter-span"></span></h2>
      <ul class="reserved-cars">
      </ul>
-    
-
-</div>
-    <div class='book-cars w-full max-w-xs'>
+    </div>
+    <div class='book-cars w-full max-w-xs ml-3'>
     <form class='form  shadow-md rounded px-8 pt-6 pb-8 mb-4'>
          <h2 class='book-cars-title'> Add a reservation </h2>
          
@@ -99,7 +103,9 @@ export default function showReservationModal(e) {
       saveReservationToApi,
     );
 
-    const closeBtn = document.querySelector('.close');
+    const closeBtn = document.querySelector(
+      '#pop-up .close',
+    );
     closeBtn.addEventListener('click', () => {
       body.removeChild(reservationsPopUp);
       reservationsPopUp.style.display = 'none';

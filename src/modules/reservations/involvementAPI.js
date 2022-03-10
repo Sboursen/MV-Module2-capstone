@@ -21,15 +21,13 @@ const getDataFromInvolvementAPI = async (id) => {
   );
 
   try {
-    let response = await fetch(url);
+    const response = await fetch(url);
 
-    response = await response.json().then((data) => {
+    await response.json().then((data) => {
       const counter = reservationCounter(data);
 
       const counterContainer = document.querySelector('#counter-span');
       counterContainer.innerHTML = `(${counter})`;
-
-      const reduceData = data.slice(0, 6);
 
       displayReserves.innerHTML = data.reduce(
         (content, comment) => {
