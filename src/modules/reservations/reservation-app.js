@@ -66,10 +66,9 @@ export default function showReservationModal(e) {
     <div class="reserved-cars-container">
      <h2 class= "reserved-cars-title"> Reservations <span id="counter-span"></span></h2>
      <ul class="reserved-cars">
-     <li class= "reserved-car"> 
      </ul>
-    Hello     
-    </li>
+    
+
 </div>
     <div class='book-cars w-full max-w-xs'>
     <form class='form  shadow-md rounded px-8 pt-6 pb-8 mb-4'>
@@ -85,7 +84,13 @@ export default function showReservationModal(e) {
     `;
     body.appendChild(reservationsPopUp);
 
-    getDataFromInvolvementAPI(id);
+    const displayReserves = document.querySelector(
+      '.reserved-cars',
+    );
+
+    getDataFromInvolvementAPI(id).catch(() => {
+      displayReserves.textContent = '';
+    });
 
     const reserveCarBtn = document.querySelector(
       'form.form .reserve-car-btn',
