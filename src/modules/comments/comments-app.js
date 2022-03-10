@@ -1,8 +1,31 @@
 import CarsApi from '../home/cars-api';
+import CommentData from './commentData';
+import Api from './createComments';
 
 const carApi = new CarsApi();
-const modalContainer = document.querySelector('#modal-container');
-export default async function showCommentModal(e) {
+
+const modalContainer = document.querySelector(
+  '#modal-container',
+);
+
+export const createComment = (event) => {
+  event.preventDefault();
+  const api = new Api();
+  const comBtn = document.querySelector('.form button');
+  const id = Number(comBtn.id.split('-')[2]);
+  const usernameInput = document.querySelector('.form .input');
+  const commentInput = document.querySelector(
+    '#modal-container .modal-items form textarea',
+  );
+
+  const username = usernameInput.value;
+  const comment = commentInput.value;
+  const commentObj = new CommentData(username, comment, id);
+
+  api.addComment(commentObj);
+};
+
+export async function showCommentModal(e) {
   await carApi.getDataPromise().then((data) => {
     const id = Number(e.target.parentNode.parentNode.id);
     if (modalContainer.classList.contains('hidden')) {
@@ -66,23 +89,33 @@ export default async function showCommentModal(e) {
     <h2 class="text-center py-4 text-xl font-bold text-slate-600">
       Add Comment
     </h2>
-    <div class="flex justify-center flex-col mx-auto items-center">
-      <textarea
-        class="w-1/2 h-32 px-2 py-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-violet-600"
-        placeholder="Write your comment here"
+    <form class="flex justify-center flex-col mx-auto items-center form" id='comment-form'>
+
+    <input class="px-2 w-1/2 py-2 border-gray-400 rounded-lg h-10 focus:outline-none
+      focus:border-violet-600 input" placeholder="Enter your username" />
+     <textarea
+        class="w-1/2 h-32 px-2 py-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-violet-600 comment"
+        placeholder="Write your comment here" type="text" 
       ></textarea>
+      
       <button
-        id="model"
+        id="comment-button-${id}"
         class="comment-button text-lg px-2 w-40 my-5 h py-1 mx-auto border-2 hover:border-2 hover:shadow-sm hover:text-white hover:bg-sky-500 rounded-lg"
+        type="submit"
       >
         Comment
       </button>
-    </div>
+    </form>
+    
   </div>
     `;
   });
 
-  const close = e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
+  const form1 = document.querySelector('.form');
+  form1.addEventListener('submit', createComment);
+
+  // close button
+  const close = document.querySelector(
     '#modal-container .modal-items .img-container .close',
   );
   close.addEventListener('click', () => {
