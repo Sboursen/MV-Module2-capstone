@@ -55,7 +55,7 @@ export default function showReservationModal(e) {
     `;
     body.appendChild(reservationsPopUp);
 
-    const closeBtn = document.querySelector('.close');
+  const closeBtn = document.querySelector('.close');
 
     closeBtn.addEventListener('click', () => {
       body.removeChild(reservationsPopUp);
