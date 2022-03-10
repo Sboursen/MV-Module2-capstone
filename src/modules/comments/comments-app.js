@@ -82,10 +82,9 @@ export default async function showCommentModal(e) {
     `;
   });
 
-  const close =
-    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
-      '#modal-container .modal-items .img-container .close'
-    );
+  const close = e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
+    '#modal-container .modal-items .img-container .close',
+  );
   console.log(close);
   close.addEventListener('click', () => {
     modalContainer.classList.add('hidden');

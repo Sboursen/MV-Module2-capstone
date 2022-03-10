@@ -9,25 +9,19 @@ const homeApp = new HomeApplication();
 function registerHomeEvents() {
   const likesbuttons = document.querySelectorAll('.heart');
 
-  likesbuttons.forEach((likebutton) =>
-    likebutton.addEventListener('click', homeApp.toggleHeart)
-  );
+  likesbuttons.forEach((likebutton) => likebutton.addEventListener('click', homeApp.toggleHeart));
 }
 
 homeApp.initialize().then(() => {
   const commentButtons = document.querySelectorAll(
-    '.car-buttons > .comment-button'
+    '.car-buttons > .comment-button',
   );
 
-  commentButtons.forEach((btn) =>
-    btn.addEventListener('click', showCommentModal)
-  );
+  commentButtons.forEach((btn) => btn.addEventListener('click', showCommentModal));
 
   const reservationButtons = document.querySelectorAll('.reservation-button');
 
-  reservationButtons.forEach((btn) =>
-    btn.addEventListener('click', showReservationModal)
-  );
+  reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
 
   registerHomeEvents();
 });
