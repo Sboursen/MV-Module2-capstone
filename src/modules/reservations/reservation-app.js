@@ -1,5 +1,4 @@
 import CarsApi from '../home/cars-api';
-import reservationCounter from './reservation-counter';
 import {
   setReservedToAPI,
   getDataFromInvolvementAPI,
@@ -20,8 +19,7 @@ const saveReservationToApi = (e) => {
     '#startDateInput',
   );
 
-  const endDateInput =
-    document.querySelector('#endDateInput');
+  const endDateInput = document.querySelector('#endDateInput');
 
   const dataBody = {
     item_id: id,
@@ -52,11 +50,11 @@ export default function showReservationModal(e) {
      <img class="flex-1 bg-contain w-78" src=${car.imgUrl}>
      <span class='flex-1 close text-2xl'> X </span>
     </div>
-    <h2 class='description'>${car.make} ${car.model} ${car.year}</h2>
+    <h2 class='description'>${car.model} ${car.year}</h2>
     <div>
       <div class=' flex justify-around'>
-       <p class='make '>Make: ${car.make}</p>
-       <p class='model'>Model: ${car.model}</p>
+       <p class='make '>Model: ${car.model}</p>
+       <p class='model'>Year: ${car.year}</p>
       </div>
       <div class='flex justify-around' >
        <p class='horsepower'>Horsepower: ${car.horsepower}</p>
