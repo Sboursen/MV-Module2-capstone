@@ -2,7 +2,7 @@ import Car from './car';
 
 export default class CarsApi {
   constructor(
-    url = 'https://private-anon-66fbb79774-carsapi1.apiary-mock.com/',
+    url = 'https://private-anon-66fbb79774-carsapi1.apiary-mock.com/'
   ) {
     this.rootEndpoint = url;
     this.allCarsEndpoint = `${url}cars`;
@@ -23,17 +23,18 @@ export default class CarsApi {
 
   getCarEndpointFromId = (id) => `${this.allCarsEndpoint}/${id}`;
 
-  #formatData = (data) => data.map((obj) => {
-    const car = new Car();
-    car.year = obj.year;
-    car.id = obj.id;
-    car.horsepower = obj.horsepower;
-    car.make = obj.make;
-    car.model = obj.model;
-    car.price = obj.price;
-    car.imgUrl = obj.img_url;
-    return car;
-  });
+  #formatData = (data) =>
+    data.map((obj) => {
+      const car = new Car();
+      car.year = obj.year;
+      car.id = obj.id;
+      car.horsepower = obj.horsepower;
+      car.make = obj.make;
+      car.model = obj.model;
+      car.price = obj.price;
+      car.imgUrl = obj.img_url;
+      return car;
+    });
 
   getAllCars = async (url = this.allCarsEndpoint) => {
     const response = await fetch(url, {

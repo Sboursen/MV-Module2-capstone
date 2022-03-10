@@ -1,5 +1,3 @@
-import cars from './cars-api';
-import Comment from './comments';
 export const carRender = (id, imgUrl, make, model, likes = 5) => `<div
       class="car-card flex flex-col gap-2 border-4 rounded-md border-violet-600" id="${id}">
       <div class="car-img flex h-40">
@@ -15,7 +13,7 @@ export const carRender = (id, imgUrl, make, model, likes = 5) => `<div
         </div>
       </div>
       <div class="car-buttons flex flex-col gap-3 p-2 ">
-        <button onclick="comments.getSingleCar(${id})" class="comment-button px-2 py-1 border-2 hover:border-2 hover:shadow-sm hover:text-white hover:bg-sky-500"
+        <button id="model" class="comment-button px-2 py-1 border-2 hover:border-2 hover:shadow-sm hover:text-white hover:bg-sky-500"
           type="button">Comment</button>
         <button
           class="reservation-button px-2 py-1 border-2 hover:border-2 hover:shadow-sm hover:text-white hover:bg-sky-500"
@@ -31,9 +29,3 @@ export function fileExists(imageUrl) {
 
   return Number(http.status) !== 404;
 }
-
-const comments = new Comment(id);
-// comments.getSingleCar(id);
-document
-  .querySelector('#modal')
-  .addEventListener('click', comments.getSingleCar);
