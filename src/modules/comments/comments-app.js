@@ -29,9 +29,7 @@ export const createComment = (event) => {
     item_id,
   );
 
-  api
-    .addComment(commentObj)
-    .then((data) => console.log(data));
+  api.addComment(commentObj).then((data) => console.log(data));
 };
 
 export async function showCommentModal(e) {
