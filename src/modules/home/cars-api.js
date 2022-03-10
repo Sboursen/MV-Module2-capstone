@@ -1,4 +1,5 @@
 import Car from './car';
+import { goodCarsId } from './home-utils';
 
 export default class CarsApi {
   constructor(
@@ -6,6 +7,7 @@ export default class CarsApi {
   ) {
     this.rootEndpoint = url;
     this.allCarsEndpoint = `${url}cars`;
+    this.goodCarsId = goodCarsId;
     this.dataPromise = this.getAllCars().then((data) => this.#formatCars(data));
   }
 
@@ -43,8 +45,13 @@ export default class CarsApi {
         'Content-Type': 'application/json',
       },
     });
+
     let data = await response.json();
+
+    data = data.filter((obj) => this.goodCarsId.includes(obj.id));
+
     data = await this.#formatData(data);
+
     return data;
   };
 }
