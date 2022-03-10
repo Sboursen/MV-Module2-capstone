@@ -1,10 +1,9 @@
 import CarsApi from '../home/cars-api';
-import Comments from './createComments';
 import CommentData from './commentData';
 import Api from './createComments';
 
 const carApi = new CarsApi();
-const comments = new Comments();
+
 const modalContainer = document.querySelector(
   '#modal-container',
 );
@@ -12,24 +11,18 @@ const modalContainer = document.querySelector(
 export const createComment = (event) => {
   event.preventDefault();
   const api = new Api();
-  const form = document.querySelector('.form');
   const comBtn = document.querySelector('.form button');
-  const item_id = Number(comBtn.id.split('-')[2]);
-  const usernameInput =
-    document.querySelector('.form .input');
+  const id = Number(comBtn.id.split('-')[2]);
+  const usernameInput = document.querySelector('.form .input');
   const commentInput = document.querySelector(
     '#modal-container .modal-items form textarea',
   );
 
   const username = usernameInput.value;
   const comment = commentInput.value;
-  const commentObj = new CommentData(
-    username,
-    comment,
-    item_id,
-  );
+  const commentObj = new CommentData(username, comment, id);
 
-  api.addComment(commentObj).then((data) => console.log(data));
+  api.addComment(commentObj);
 };
 
 export async function showCommentModal(e) {
@@ -118,16 +111,6 @@ export async function showCommentModal(e) {
     `;
   });
 
-  const form = document.querySelector(
-    '#modal-container .modal-items form',
-  );
-  const formBtn = document.querySelector(
-    '#modal-container .modal-items form button',
-  );
-  const textArea = document.querySelector(
-    '#modal-container .modal-items form textarea',
-  );
-  const commentButtonId = Number(formBtn.id.split('-')[2]);
   const form1 = document.querySelector('.form');
   form1.addEventListener('submit', createComment);
 
