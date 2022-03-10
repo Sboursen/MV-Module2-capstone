@@ -11,7 +11,7 @@ const setReservedToAPI = async (dataBody) => {
       body: JSON.stringify(dataBody),
     },
   );
-  return response.json();
+  // return response.json();
 };
 
 const getDataFromInvolvementAPI = async (id) => {
