@@ -21,16 +21,16 @@ export default function showReservationModal(e) {
     reservationsPopUp.innerHTML = `
     <div class="reservation-content car-card bg-white flex flex-col gap-2 border-4 rounded-md border-violet-600" id="${id}">
     <div class='flex justify-between'>
-     <img class="flex-1 bg-cover bg-contain w-78" src=${car.imgUrl}>
+     <img class="flex-1 bg-contain w-78" src=${car.imgUrl}>
      <span class='flex-1 close text-2xl'> X </span>
     </div>
     <h2 class='description'>${car.make} ${car.model} ${car.year}</h2>
     <div>
-      <div class=' block flex justify-around'>
+      <div class='flex justify-around'>
        <p class='make '>Make: ${car.make}</p>
        <p class='model'>Model: ${car.model}</p>
       </div>
-      <div class='block flex justify-around' >
+      <div class='flex justify-around' >
        <p class='horsepower'>Horsepower: ${car.horsepower}</p>
        <p class='price'>Price: ${car.price}</p>
       </div>

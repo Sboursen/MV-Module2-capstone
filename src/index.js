@@ -1,14 +1,21 @@
 import './style.css';
-import HomeApplication from './modules/home/home-app';
 import {
-  showCommentModal,
-} from './modules/comments/comments-app';
+  HomeApplication,
+  getAllCarsCount,
+} from './modules/home/home-app';
+import showCommentModal from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
+// import { getDataFromInvolvementAPI } from './modules/reservations/involvementAPI';
 
 const homeApp = new HomeApplication();
 
 function registerHomeEvents() {
-  const likesButtons = document.querySelectorAll('.heart');
+  const likesbuttons = document.querySelectorAll('.heart');
+  const allCarsCount = document.querySelector(
+    '.cars-nav-element',
+  );
+
+  allCarsCount.textContent = getAllCarsCount();
 
   likesButtons.forEach((likeButton) => likeButton.addEventListener(
     'click',

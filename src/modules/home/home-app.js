@@ -6,7 +6,7 @@ import {
 } from './home-utils';
 import InvolvementApi from './involvement-api';
 
-export default class HomeApplication {
+export class HomeApplication {
   constructor() {
     this.carsApi = new CarsApi();
 
@@ -85,4 +85,9 @@ export default class HomeApplication {
       });
     });
   };
+}
+
+export function getAllCarsCount() {
+  const main = document.querySelector('main');
+  return main.childElementCount;
 }
