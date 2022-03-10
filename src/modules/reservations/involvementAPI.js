@@ -11,7 +11,7 @@ const setReservedToAPI = async (dataBody) => {
       body: JSON.stringify(dataBody),
     },
   );
-  // return response.json();
+  return response;
 };
 
 const getDataFromInvolvementAPI = async (id) => {
@@ -26,8 +26,7 @@ const getDataFromInvolvementAPI = async (id) => {
     response = await response.json().then((data) => {
       const counter = reservationCounter(data);
 
-      const counterContainer =
-        document.querySelector('#counter-span');
+      const counterContainer = document.querySelector('#counter-span');
       counterContainer.innerHTML = `(${counter})`;
 
       const reduceData = data.slice(0, 6);
@@ -40,10 +39,6 @@ const getDataFromInvolvementAPI = async (id) => {
         },
         '',
       );
-
-      //         displayReserves.innerHTML += `
-      //   ${data.date_start} - ${data.date_end} by ${data.username};
-      //  `;
     });
   } catch (error) {
     throw new Error('Fetch Data Failed');
