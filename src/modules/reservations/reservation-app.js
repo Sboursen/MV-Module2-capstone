@@ -9,7 +9,9 @@ export default function showReservationModal(e) {
   const id = Number(e.target.parentNode.parentNode.id);
 
   carApi.getDataPromise().then((data) => {
-    reservationsPopUp.classList.add('reservation-container');
+    reservationsPopUp.classList.add(
+      'reservation-container',
+    );
     reservationsPopUp.id = 'pop-up';
     reservationsPopUp.hidden = true;
     reservationsPopUp.style.display = 'block';
@@ -55,7 +57,9 @@ export default function showReservationModal(e) {
     `;
     body.appendChild(reservationsPopUp);
 
-    const closeBtn = document.querySelector('.close');
+    const closeBtn = document.querySelector(
+      '#pop-up .close',
+    );
 
     closeBtn.addEventListener('click', () => {
       body.removeChild(reservationsPopUp);

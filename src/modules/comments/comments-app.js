@@ -1,9 +1,39 @@
 import CarsApi from '../home/cars-api';
 import Comments from './createComments';
 import CommentData from './commentData';
+import Api from './createComments';
+
 const carApi = new CarsApi();
 const comments = new Comments();
-const modalContainer = document.querySelector('#modal-container');
+const modalContainer = document.querySelector(
+  '#modal-container',
+);
+
+export const createComment = (event) => {
+  event.preventDefault();
+  const api = new Api();
+  const form = document.querySelector('.form');
+  const comBtn = document.querySelector('.form button');
+  const item_id = Number(comBtn.id.split('-')[2]);
+  const usernameInput =
+    document.querySelector('.form .input');
+  const commentInput = document.querySelector(
+    '#modal-container .modal-items form textarea',
+  );
+
+  const username = usernameInput.value;
+  const comment = commentInput.value;
+  const commentObj = new CommentData(
+    username,
+    comment,
+    item_id,
+  );
+
+  api
+    .addComment(commentObj)
+    .then((data) => console.log(data));
+};
+
 export async function showCommentModal(e) {
   await carApi.getDataPromise().then((data) => {
     const id = Number(e.target.parentNode.parentNode.id);
@@ -68,7 +98,7 @@ export async function showCommentModal(e) {
     <h2 class="text-center py-4 text-xl font-bold text-slate-600">
       Add Comment
     </h2>
-    <form class="flex justify-center flex-col mx-auto items-center form">
+    <form class="flex justify-center flex-col mx-auto items-center form" id='comment-form'>
 
     <input class="px-2 w-1/2 py-2 border-gray-400 rounded-lg h-10 focus:outline-none
       focus:border-violet-600 input" placeholder="Enter your username" />
@@ -90,42 +120,25 @@ export async function showCommentModal(e) {
     `;
   });
 
-  const close =
-    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
-      '#modal-container .modal-items .img-container .close'
-    );
-  const form =
-    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
-      '#modal-container .modal-items form'
-    );
-  const formBtn =
-    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
-      '#modal-container .modal-items form button'
-    );
-  const textArea =
-    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(
-      '#modal-container .modal-items form textarea'
-    );
-  const comBtn = Number(document.querySelector('form button').id.split('-')[2]);
+  const form = document.querySelector(
+    '#modal-container .modal-items form',
+  );
+  const formBtn = document.querySelector(
+    '#modal-container .modal-items form button',
+  );
+  const textArea = document.querySelector(
+    '#modal-container .modal-items form textarea',
+  );
+  const commentButtonId = Number(formBtn.id.split('-')[2]);
   const form1 = document.querySelector('.form');
-  console.log(form1);
+  form1.addEventListener('submit', createComment);
+
+  // close button
+  const close = document.querySelector(
+    '#modal-container .modal-items .img-container .close',
+  );
   close.addEventListener('click', () => {
     modalContainer.classList.add('hidden');
     modalContainer.classList.remove('show');
-  });
-}
-
-export async function createComment(event) {
-  event.preventDefault();
-  const form = document.querySelector('.form');
-  const comBtn = document.querySelector('form button');
-  const id = Number(comBtn.id.split('-')[2]);
-  const username = document.querySelector('.input').value;
-  const comment = document.querySelector('textarea').value;
-  const item_id = id;
-  const commentObj = new CommentData(username, item_id, comment);
-
-  comments.addComment(commentObj).then((dat) => {
-    console.log(dat);
   });
 }
