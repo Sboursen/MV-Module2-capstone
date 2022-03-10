@@ -25,9 +25,7 @@ describe('cars counter', () => {
 
   it('works for container that contains multiple items', () => {
     createMockDocument();
-    [1, 2, 3, 4, 5, 6, 7, 8, 9].forEach((el) =>
-      appendElementToMain(),
-    );
+    [1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(() => appendElementToMain());
 
     const carCount = getAllCarsCount();
 
@@ -36,10 +34,8 @@ describe('cars counter', () => {
 
   it('works if some elements were removed in the process', () => {
     createMockDocument();
-    [1, 2, 3, 4, 5, 6, 7, 8, 9].forEach((el) =>
-      appendElementToMain(),
-    );
-    [1, 2, 3].forEach((el) => removeElementFromMain());
+    [1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(() => appendElementToMain());
+    [1, 2, 3].forEach(() => removeElementFromMain());
 
     const carCount = getAllCarsCount();
 
@@ -48,9 +44,9 @@ describe('cars counter', () => {
 
   it('works with multiple add and remove actions', () => {
     createMockDocument();
-    [1, 2, 3, 4].forEach((el) => appendElementToMain());
-    [1, 2, 3].forEach((el) => removeElementFromMain());
-    [1, 2].forEach((el) => appendElementToMain());
+    [1, 2, 3, 4].forEach(() => appendElementToMain());
+    [1, 2, 3].forEach(() => removeElementFromMain());
+    [1, 2].forEach(() => appendElementToMain());
     removeElementFromMain();
 
     const carCount = getAllCarsCount();
