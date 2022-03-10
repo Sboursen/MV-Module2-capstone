@@ -43,3 +43,12 @@ body {
 .reservation-container.on {
   display: block;
 }
+
+.input {
+  width: 50%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid rgb(184 184 184);
+  padding: 0 10px;
+  margin-bottom: 10px;
+}

@@ -3,7 +3,7 @@ import {
   HomeApplication,
   getAllCarsCount,
 } from './modules/home/home-app';
-import showCommentModal from './modules/comments/comments-app';
+import { showCommentModal } from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
 import {
   setReservedToAPI,
@@ -26,9 +26,7 @@ function registerHomeEvents() {
       homeApp.toggleHeart,
     ),
   );
-}
 
-homeApp.initialize().then(() => {
   const commentButtons = document.querySelectorAll(
     '.car-buttons > .comment-button',
   );
@@ -44,6 +42,8 @@ homeApp.initialize().then(() => {
   reservationButtons.forEach((btn) =>
     btn.addEventListener('click', showReservationModal),
   );
+}
 
+homeApp.initialize().then(() => {
   registerHomeEvents();
 });
