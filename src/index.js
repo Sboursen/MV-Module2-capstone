@@ -5,7 +5,7 @@ import {
 } from './modules/home/home-app';
 import showCommentModal from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
-// import { getDataFromInvolvementAPI } from './modules/reservations/involvementAPI';
+import { getDataFromInvolvementAPI } from './modules/reservations/involvementAPI';
 
 const homeApp = new HomeApplication();
 
@@ -36,5 +36,5 @@ homeApp.initialize().then(() => {
   registerHomeEvents();
 });
 
-// getDataFromInvolvementAPI('item1');
+getDataFromInvolvementAPI('item1');
 // setReservedToAPI('item1', 'Jerry', '2022/03/12', '2022/03/13');
