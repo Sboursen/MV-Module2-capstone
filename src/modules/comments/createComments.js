@@ -7,7 +7,7 @@ export default class Api {
     this.commentsEndpoint = `${url}${this.projectId}/comments/`;
   }
 
-  #addComment = async (
+  #getComment = async (
     url = this.commentsEndpoint,
     bodyData,
   ) => {
@@ -37,6 +37,5 @@ export default class Api {
     return response.json();
   };
 
-  addComment = (bodyData) =>
-    this.#addComment(this.commentsEndpoint, bodyData);
+  addComment = (bodyData) => this.#addComment(this.commentsEndpoint, bodyData);
 }

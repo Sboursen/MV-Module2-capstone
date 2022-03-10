@@ -3,14 +3,14 @@ import {
   HomeApplication,
   getAllCarsCount,
 } from './modules/home/home-app';
-import showCommentModal from './modules/comments/comments-app';
+import { showCommentModal } from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
 // import { getDataFromInvolvementAPI } from './modules/reservations/involvementAPI';
 
 const homeApp = new HomeApplication();
 
 function registerHomeEvents() {
-  const likesbuttons = document.querySelectorAll('.heart');
+  const likesButtons = document.querySelectorAll('.heart');
   const allCarsCount = document.querySelector(
     '.cars-nav-element',
   );
