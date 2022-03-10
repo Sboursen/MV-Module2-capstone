@@ -4,7 +4,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .popup-bg {
   background-color: rgb(0, 0, 0, 0.4);
 }
@@ -24,6 +26,7 @@ body {
 .modal-items {
   width: 90%;
 }
+
 .reservation-container {
   display: none;
   height: 100%;
