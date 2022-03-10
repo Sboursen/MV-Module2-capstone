@@ -19,8 +19,7 @@ const saveReservationToApi = (e) => {
     '#startDateInput',
   );
 
-  const endDateInput =
-    document.querySelector('#endDateInput');
+  const endDateInput = document.querySelector('#endDateInput');
 
   const dataBody = {
     item_id: id,
@@ -63,8 +62,8 @@ export default function showReservationModal(e) {
       </div>
       <div class='flex justify-around' >
        <p class='horsepower'>Horsepower: ${
-         car.horsepower
-       }</p>
+  car.horsepower
+}</p>
       </div>
     </div>
     <div class="reserved-cars-container ml-3">
