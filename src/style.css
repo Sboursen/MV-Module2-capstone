@@ -1,8 +1,31 @@
+/* stylelint-disable CssSyntaxError */
 /* stylelint-disable csstree/validator */
 /* stylelint-disable scss/at-rule-no-unknown */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.popup-bg {
+  background-color: rgb(0 0 0 / 40%);
+}
+
+body {
+  font-family: Popins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333;
+}
+
+.show {
+  display: flex;
+}
+
+.modal-items {
+  width: 90%;
+}
 
 .reservation-container {
   display: none;

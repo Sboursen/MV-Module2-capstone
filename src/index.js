@@ -17,10 +17,7 @@ function registerHomeEvents() {
 
   allCarsCount.textContent = getAllCarsCount();
 
-  likesbuttons.forEach((likebutton) => likebutton.addEventListener(
-    'click',
-    homeApp.toggleHeart,
-  ));
+  likesbuttons.forEach((likebutton) => likebutton.addEventListener('click', homeApp.toggleHeart));
 }
 
 homeApp.initialize().then(() => {
