@@ -2,7 +2,7 @@
 
 # LeaderBoard
 
-> **CarCollectors** is website for costumers who want to rent a car. It allows the visitor to browse an extensive collection of beautiful cars using the [Cars API](https://carsapi1.docs.apiary.io/#reference/0/cars-collection). It also allows the user to like comment and make a reservation for a given car. All data are saved using the [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270).
+> **CarCollectors** is website for customers who want to rent a car. It allows the visitor to browse an extensive collection of beautiful cars using the [Cars API](https://carsapi1.docs.apiary.io/#reference/0/cars-collection). It also allows the user to like, comment and make a reservation for a given car. All data are saved using the [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270).
 
 ## Built With
 
@@ -15,10 +15,10 @@
 ## Milestones
 
 - [x] Milestone 1: **Project Setup and topic.**
-- [x] Milestone 2: **Creation the Home interface. creation the comment and the reservation pop-ups**
+- [x] Milestone 2: **Creation of the Home interface. Creation of the comment and the reservation pop-ups**
 - [x] Milestone 3: **Creation of the communication interfaces with the APIs**
-- [x] Milestone 4: **Implementation of the likes comments and the reservations functionalities**
-- [x] Milestone 5: **Writing tests to ensure that the robustness of the application**
+- [x] Milestone 4: **Implementation of the likes, comments and the reservations functionalities**
+- [x] Milestone 5: **Writing tests to ensure the robustness of the application**
 
 ## sneak peek
 
@@ -50,10 +50,10 @@
 - Twitter: [@sboursen_dev](https://twitter.com/sboursen_dev)
 - LinkedIn: [@sboursen](https://linkedin.com/in/sboursen)
 
-👤 **Soufiane Boursen**
+👤 **Jerry Owusu**
 
 - GitHub: [@jerryowusu](https://github.com/jerryowusu)
-- Gmail: [@sboursen_dev](jerryowusu6133@gmail.com)
+- Gmail: [@jerryowusu](jerryowusu6133@gmail.com)
 - LinkedIn: [@jeremiah-owusu](https://www.linkedin.com/in/jeremiah-owusu-b50a70173/)
 
 👤 **Mwafrika Josué**
