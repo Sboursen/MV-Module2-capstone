@@ -9,6 +9,23 @@ const carApi = new CarsApi();
 const reservationsPopUp = document.createElement('div');
 const body = document.querySelector('body');
 
+const clearInputs = () => {
+  const userNameInput = document.querySelector(
+    '#userNameInput',
+  );
+
+  const startDateInput = document.querySelector(
+    '#startDateInput',
+  );
+
+  const endDateInput =
+    document.querySelector('#endDateInput');
+
+  userNameInput.value = '';
+  startDateInput.value = '';
+  endDateInput.value = '';
+};
+
 const saveReservationToApi = (e) => {
   const id = e.target.id.split('-').at(-1);
   const userNameInput = document.querySelector(
@@ -19,7 +36,8 @@ const saveReservationToApi = (e) => {
     '#startDateInput',
   );
 
-  const endDateInput = document.querySelector('#endDateInput');
+  const endDateInput =
+    document.querySelector('#endDateInput');
 
   const dataBody = {
     item_id: id,
@@ -28,13 +46,10 @@ const saveReservationToApi = (e) => {
     date_end: endDateInput.value,
   };
 
-  setReservedToAPI(dataBody);
-
-  userNameInput.value = '';
-  startDateInput.value = '';
-  endDateInput.value = '';
-
-  getDataFromInvolvementAPI(dataBody);
+  setReservedToAPI(dataBody).then(() => {
+    clearInputs();
+    getDataFromInvolvementAPI(id);
+  });
 };
 
 export default function showReservationModal(e) {
@@ -72,7 +87,9 @@ export default function showReservationModal(e) {
       </div>
       <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='horsepower'>Horsepower:</h3>
-         <span class="text-slate-600"> ${car.horsepower}</span>
+         <span class="text-slate-600"> ${
+           car.horsepower
+         }</span>
      </div>
      <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='price'>Price: </h3>

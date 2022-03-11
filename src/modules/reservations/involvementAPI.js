@@ -1,7 +1,7 @@
 import reservationCounter from './reservation-counter';
 
 const setReservedToAPI = async (dataBody) => {
-  const response = await fetch(
+  await fetch(
     'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2C4jJFKraIvaxjrsdqH5/reservations',
     {
       method: 'POST',
@@ -11,7 +11,6 @@ const setReservedToAPI = async (dataBody) => {
       body: JSON.stringify(dataBody),
     },
   );
-  return response;
 };
 
 const getDataFromInvolvementAPI = async (id) => {
@@ -26,7 +25,8 @@ const getDataFromInvolvementAPI = async (id) => {
     await response.json().then((data) => {
       const counter = reservationCounter(data);
 
-      const counterContainer = document.querySelector('#counter-span');
+      const counterContainer =
+        document.querySelector('#counter-span');
       counterContainer.innerHTML = `(${counter})`;
 
       displayReserves.innerHTML = data.reduce(
