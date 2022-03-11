@@ -11,15 +11,19 @@ export default class Api {
     rootUrl = this.commentsEndpoint,
     id,
   ) => {
-    const url = `${rootUrl}?item_id=${id}`;
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const url = `${rootUrl}?item_id=${id}`;
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    return response.json();
+      return response.json();
+    } catch (error) {
+      return [];
+    }
   };
 
   #addComment = async (
