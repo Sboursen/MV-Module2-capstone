@@ -51,16 +51,16 @@ export default function showReservationModal(e) {
       </div>
       <div class='flex justify-around w-full'>
        <p class='horsepower'>Year: <span class="text-sky-700">${
-         car.year
-       }</span></p>
+  car.year
+}</span></p>
        <p class='price'>Price: <span class="text-sky-800">${
-         car.price
-       }</span></p>
+  car.price
+}</span></p>
       </div>
       <div class='flex w-full justify-center'>
        <p class='horsepower'>Horsepower:<span class="text-sky-800"> ${
-         car.horsepower
-       }</span></p>
+  car.horsepower
+}</span></p>
       </div>
     </div>
     <div class="reserved-cars-container">

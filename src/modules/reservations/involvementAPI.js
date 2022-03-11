@@ -9,7 +9,7 @@ const setReservedToAPI = async (dataBody) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(dataBody),
-    }
+    },
   );
   return response;
 };
