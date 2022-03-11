@@ -91,7 +91,7 @@ export default function showReservationModal(e) {
      </div>
      <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='price'>Price: </h3>
-         <span class="text-slate-600"> ${car.price}</span>
+         <span class="text-slate-600">$${car.price}</span>
      </div>
      </div>
     <div class="reserved-cars-container ml-3">
@@ -104,7 +104,7 @@ export default function showReservationModal(e) {
 
     <form class='form flex justify-center flex-col mx-auto items-center'> 
 
-          <input class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 mb-6" id="userNameInput" type="text" placeholder="name">
+          <input class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 mb-6" id="userNameInput" type="text" placeholder="name" required>
 
           <input class='start-date appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 mb-6' id="startDateInput" type="date" placeholder='start-date'>
 
