@@ -3,3 +3,8 @@ node_modules
 
 # design files
 src/design
+
+
+# ignore dist
+
+dist
