@@ -2,21 +2,21 @@ export default class Api {
   constructor(
     url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/',
   ) {
-    this.projectId = '0fIC503i0qOW3Z58w8Vo';
+    this.projectId = 'K2k68wPBsTKAT68ziNEu';
     this.rootEndpoint = url;
-    this.commentsEndpoint = `${url}${this.projectId}/comments/`;
+    this.commentsEndpoint = `${url}${this.projectId}/comments`;
   }
 
   #getComment = async (
-    url = this.commentsEndpoint,
-    bodyData,
+    rootUrl = this.commentsEndpoint,
+    id,
   ) => {
+    const url = `${rootUrl}?item_id=${id}`;
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bodyData),
     });
 
     return response.json();
@@ -26,16 +26,18 @@ export default class Api {
     url = this.commentsEndpoint,
     bodyData,
   ) => {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyData),
     });
-
-    return response.json();
   };
 
-  addComment = (bodyData) => this.#addComment(this.commentsEndpoint, bodyData);
+  addComment = (bodyData) =>
+    this.#addComment(this.commentsEndpoint, bodyData);
+
+  getComment = (id) =>
+    this.#getComment(this.commentsEndpoint, id);
 }

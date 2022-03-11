@@ -13,7 +13,8 @@ export const createComment = (event) => {
   const api = new Api();
   const comBtn = document.querySelector('.form button');
   const id = Number(comBtn.id.split('-')[2]);
-  const usernameInput = document.querySelector('.form .input');
+  const usernameInput =
+    document.querySelector('.form .input');
   const commentInput = document.querySelector(
     '#modal-container .modal-items form textarea',
   );
@@ -22,7 +23,11 @@ export const createComment = (event) => {
   const comment = commentInput.value;
   const commentObj = new CommentData(username, comment, id);
 
-  api.addComment(commentObj);
+  api
+    .addComment(commentObj)
+    .then(() => api.getComment(id))
+    .then((data) => console.log(data))
+    .catch((data) => console.log(data));
 };
 
 export async function showCommentModal(e) {
