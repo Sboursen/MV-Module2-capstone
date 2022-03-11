@@ -63,7 +63,7 @@ export default function showReservationModal(e) {
 
     closeBtn.addEventListener('click', () => {
       body.removeChild(reservationsPopUp);
-      reservationsPopUp.style.display = 'none';
+      reservationsPopUp.style.di
     });
   });
 }
