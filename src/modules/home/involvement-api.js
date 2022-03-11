@@ -2,17 +2,17 @@ export default class InvolvementApi {
   constructor(
     url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/',
   ) {
-    this.projectId = '0fIC503i0qOW3Z58w8Vo';
+    this.projectId = 'K2k68wPBsTKAT68ziNEu';
     this.rootEndpoint = url;
-    this.likesEndpoint = `${url}${this.projectId}/likes/`;
+    this.likesEndpoint = `${url}${this.projectId}/likes`;
     this.likesData = this.#getLikes();
   }
 
   getLikesData = () => this.likesData;
 
-  setLikesData = (bodyData) => {
-    this.#addLike(this.likesEndpoint, bodyData);
-    this.likesData = this.#getLikes();
+  setLikesData = async (bodyData) => {
+    await this.#addLike(this.likesEndpoint, bodyData);
+    this.likesData = await this.#getLikes();
     return this.likesData;
   };
 
@@ -28,14 +28,12 @@ export default class InvolvementApi {
   };
 
   #addLike = async (url = this.likesEndpoint, bodyData) => {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyData),
     });
-
-    return response.json();
   };
 }
