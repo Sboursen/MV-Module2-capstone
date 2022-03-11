@@ -1,16 +1,45 @@
 import CarsApi from '../home/cars-api';
 import CommentData from './commentData';
 import Api from './createComments';
+import commentCounter from './comment-counter';
 
 const carApi = new CarsApi();
 
-const modalContainer = document.querySelector(
-  '#modal-container',
-);
+const modalContainer = document.querySelector('#modal-container');
+
+const renderComment = (dataItem) => `<li class="text-lg">
+        <span>${dataItem.creation_date}</span> -
+        <span class="text-slate-600 mx-2">${dataItem.username} : </span>
+        <span>${dataItem.comment}</span>
+      </li>`;
+
+const displayCommentCounter = (data) => {
+  const numberOfComments = commentCounter(data);
+  const commentCounterElement = document.querySelector(
+    '#modal .comment-counter-header',
+  );
+
+  commentCounterElement.textContent = `(${numberOfComments})`;
+};
+
+const displayComment = (data) => {
+  const CommentContainer = document.querySelector('#modal .comment-container');
+  if (data.length > 0) {
+    let containerString = '';
+    data.forEach((dataItem) => {
+      containerString += `${renderComment(dataItem)} \n`;
+    });
+
+    CommentContainer.innerHTML = containerString;
+  } else {
+    CommentContainer.innerHTML = '';
+  }
+};
 
 export const createComment = (event) => {
   event.preventDefault();
   const api = new Api();
+  const form = document.querySelector('.form');
   const comBtn = document.querySelector('.form button');
   const id = Number(comBtn.id.split('-')[2]);
   const usernameInput = document.querySelector('.form .input');
@@ -22,12 +51,19 @@ export const createComment = (event) => {
   const comment = commentInput.value;
   const commentObj = new CommentData(username, comment, id);
 
-  api.addComment(commentObj);
+  api
+    .addComment(commentObj)
+    .then(() => api.getComment(id))
+    .then((data) => {
+      displayComment(data);
+      displayCommentCounter(data);
+    });
+  form.reset();
 };
 
 export async function showCommentModal(e) {
+  const id = Number(e.target.parentNode.parentNode.id);
   await carApi.getDataPromise().then((data) => {
-    const id = Number(e.target.parentNode.parentNode.id);
     if (modalContainer.classList.contains('hidden')) {
       modalContainer.classList.add('show');
       modalContainer.classList.remove('hidden');
@@ -72,19 +108,9 @@ export async function showCommentModal(e) {
       </div>
     </div>
     <h2 class="text-center text-xl py-4 font-bold text-slate-600">
-      Comments (2)
+      Comments <span class="comment-counter-header"></span>
     </h2>
-    <ul class="flex justify-center flex-col mx-auto items-center py-2">
-      <li class="text-lg">
-        <span>21/06/2020 </span> -
-        <span class="text-slate-600 mx-2">John Doe : </span>
-        <span> Lorem ipsum dolor sit amet consectetur </span>
-      </li>
-      <li class="text-lg">
-        <span>21/06/2020 </span> -
-        <span class="text-slate-600 mx-2">John Doe : </span>
-        <span> Lorem ipsum dolor sit amet consectetur </span>
-      </li>
+    <ul class="comment-container flex justify-center flex-col mx-auto items-center py-2">
     </ul>
     <h2 class="text-center py-4 text-xl font-bold text-slate-600">
       Add Comment
@@ -114,7 +140,20 @@ export async function showCommentModal(e) {
   const form1 = document.querySelector('.form');
   form1.addEventListener('submit', createComment);
 
-  // close button
+  // load comments
+  const api = new Api();
+
+  await api
+    .getComment(id)
+    .then((commentData) => {
+      displayComment(commentData);
+      displayCommentCounter(commentData);
+    })
+    .catch((commentData) => {
+      displayComment([]);
+      displayCommentCounter(commentData);
+    });
+
   const close = document.querySelector(
     '#modal-container .modal-items .img-container .close',
   );

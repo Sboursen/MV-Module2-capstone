@@ -1,8 +1,10 @@
 import reservationCounter from './reservation-counter';
 
+const appId = 'K2k68wPBsTKAT68ziNEu';
+
 const setReservedToAPI = async (dataBody) => {
   const response = await fetch(
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2C4jJFKraIvaxjrsdqH5/reservations',
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/reservations`,
     {
       method: 'POST',
       headers: {
@@ -15,7 +17,7 @@ const setReservedToAPI = async (dataBody) => {
 };
 
 const getDataFromInvolvementAPI = async (id) => {
-  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2C4jJFKraIvaxjrsdqH5/reservations?item_id=${id}`;
+  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/reservations?item_id=${id}`;
   const displayReserves = document.querySelector(
     '.reserved-cars',
   );
