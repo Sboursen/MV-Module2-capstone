@@ -1,7 +1,7 @@
 /* stylelint-disable CssSyntaxError */
 /* stylelint-disable csstree/validator */
 /* stylelint-disable scss/at-rule-no-unknown */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -33,7 +33,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgb(100 88 88 / 90%);
+  background-color: rgb(0, 0, 0) rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   overflow-y: scroll;
   z-index: 1;
