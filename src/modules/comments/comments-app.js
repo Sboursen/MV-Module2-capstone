@@ -39,6 +39,7 @@ const displayComment = (data) => {
 export const createComment = (event) => {
   event.preventDefault();
   const api = new Api();
+  const form = document.querySelector('.form');
   const comBtn = document.querySelector('.form button');
   const id = Number(comBtn.id.split('-')[2]);
   const usernameInput = document.querySelector('.form .input');
@@ -57,6 +58,7 @@ export const createComment = (event) => {
       displayComment(data);
       displayCommentCounter(data);
     });
+  form.reset();
 };
 
 export async function showCommentModal(e) {
