@@ -75,7 +75,7 @@ export default function showReservationModal(e) {
     
     <h2 class='text-center text-xl text-slate-600 py-5 font-bold'>${car.make.toUpperCase()}</h2>
 
-    <div class="flex justify-between flex-col w-1/2 mx-auto gap-y-5">
+    <div class="flex justify-between items-center flex-col w-1/2 mx-auto gap-y-5">
     <div class="flex justify-between w-full mx-auto flex-wrap gap-y-5">
       <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='model'>Model: </h3>
