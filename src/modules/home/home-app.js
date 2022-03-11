@@ -16,7 +16,7 @@ export class HomeApplication {
     this.involvementApi = new InvolvementApi();
   }
 
-  initialize = () => this.getAllCars().then(() => this.#updateLikes());
+  initialize = () => this.getANumberOfCars(24).then(() => this.#updateLikes());
 
   getAllCars = () => this.carsApi.getAllCars().then((data) => {
     this.#displayCars(data);
@@ -24,7 +24,7 @@ export class HomeApplication {
   });
 
   getANumberOfCars = (number) => this.carsApi.getAllCars().then((data) => {
-    const toBeDisplayed = data.slice(number);
+    const toBeDisplayed = data.slice(0, number);
 
     this.#displayCars(toBeDisplayed);
 
