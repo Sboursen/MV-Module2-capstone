@@ -5,6 +5,7 @@ import {
 } from './modules/home/home-app';
 import { showCommentModal } from './modules/comments/comments-app';
 import showReservationModal from './modules/reservations/reservation-app';
+import Icon from './images/logo.png';
 
 const homeApp = new HomeApplication();
 
@@ -33,6 +34,9 @@ function registerHomeEvents() {
 
   reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
 }
+
+const logoImg = document.querySelector('.logo');
+logoImg.src = Icon;
 
 homeApp.initialize().then(() => {
   registerHomeEvents();
