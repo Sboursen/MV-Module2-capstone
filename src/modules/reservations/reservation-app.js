@@ -29,6 +29,9 @@ const saveReservationToApi = (e) => {
   };
 
   setReservedToAPI(dataBody);
+  userNameInput.value = '';
+  startDateInput.value = '';
+  endDateInput.value = '';
 };
 
 export default function showReservationModal(e) {
@@ -45,12 +48,15 @@ export default function showReservationModal(e) {
     const car = data[id];
 
     reservationsPopUp.innerHTML = `
-    <div class="reservation-contentrelative h-auto modal-items m-auto bg-white border-violet-600 border-solid border-4" id="${id}">
+    <div class="reservation-content relative h-auto modal-items m-auto bg-white border-violet-600 border-solid border-4" id="${id}">
+
     <div class='flex relative justify-between'>
      <img class="flex-1 bg-contain w-78" src=${car.imgUrl}>
      <button class='close absolute top-2 right-2 text-2xl rounded-full px-2 border-violet-700 hover:border-red-500 hover:text-red-500 border-4 bg-white'> X </button>
     </div>
+    
     <h2 class='text-center text-xl text-slate-600 py-5 font-bold'>${car.make.toUpperCase()}</h2>
+
     <div class="flex justify-between flex-col w-1/2 mx-auto gap-y-5">
     <div class="flex justify-between w-full mx-auto flex-wrap gap-y-5">
       <div class='w-2/5 flex text-lg justify-center gap-x-4'>
