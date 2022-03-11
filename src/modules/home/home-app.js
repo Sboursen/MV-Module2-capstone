@@ -5,12 +5,10 @@ import {
   unlikeClass,
 } from './home-utils';
 import InvolvementApi from './involvement-api';
-import Logo from '../../images/logo.png';
+
 
 export class HomeApplication {
   constructor() {
-    this.logoImg = document.querySelector('.logo');
-    this.logoImg.src = Logo;
     this.carsApi = new CarsApi();
 
     // DOM elements
@@ -19,26 +17,32 @@ export class HomeApplication {
     this.involvementApi = new InvolvementApi();
   }
 
-  initialize = () => this.getANumberOfCars(24).then(() => this.#updateLikes());
+  initialize = () =>
+    this.getANumberOfCars(24).then(() =>
+      this.#updateLikes(),
+    );
 
-  getAllCars = () => this.carsApi.getAllCars().then((data) => {
-    this.#displayCars(data);
-    return data;
-  });
+  getAllCars = () =>
+    this.carsApi.getAllCars().then((data) => {
+      this.#displayCars(data);
+      return data;
+    });
 
-  getANumberOfCars = (number) => this.carsApi.getAllCars().then((data) => {
-    const toBeDisplayed = data.slice(0, number);
+  getANumberOfCars = (number) =>
+    this.carsApi.getAllCars().then((data) => {
+      const toBeDisplayed = data.slice(0, number);
 
-    this.#displayCars(toBeDisplayed);
+      this.#displayCars(toBeDisplayed);
 
-    return data;
-  });
+      return data;
+    });
 
   #clearMain = () => {
     this.main.innerHTML = '';
   };
 
-  #createCarElement = (car) => carRender(car.id, car.imgUrl, car.make, car.model);
+  #createCarElement = (car) =>
+    carRender(car.id, car.imgUrl, car.make, car.model);
 
   #displayCars = (toBeDisplayed) => {
     this.#clearMain();
@@ -55,17 +59,21 @@ export class HomeApplication {
   toggleHeart = (e) => {
     if (e.currentTarget.classList.contains('heart')) {
       const heartButton = e.currentTarget;
-      const heartCount = heartButton.nextSibling.nextSibling.firstChild;
-      const { id } = heartButton.parentNode.parentNode.parentNode;
+      const heartCount =
+        heartButton.nextSibling.nextSibling.firstChild;
+      const { id } =
+        heartButton.parentNode.parentNode.parentNode;
       const data = {};
       data.item_id = Number(id);
 
       if (heartButton.className === likeClass) {
         heartButton.className = unlikeClass;
-        heartCount.textContent = +heartCount.textContent - 1;
+        heartCount.textContent =
+          +heartCount.textContent - 1;
       } else {
         heartButton.className = likeClass;
-        heartCount.textContent = +heartCount.textContent + 1;
+        heartCount.textContent =
+          +heartCount.textContent + 1;
         this.involvementApi.setLikesData(data);
       }
     }
@@ -73,9 +81,11 @@ export class HomeApplication {
 
   #updateLikes = () => {
     this.involvementApi.getLikesData().then((data) => {
-      const likesElements = document.querySelectorAll('.likes');
+      const likesElements =
+        document.querySelectorAll('.likes');
       likesElements.forEach((like) => {
-        const { id } = like.parentNode.parentNode.parentNode.parentNode;
+        const { id } =
+          like.parentNode.parentNode.parentNode.parentNode;
         let numberOfLikes = data.find(
           (e) => Number(e.item_id) === Number(id),
         );
