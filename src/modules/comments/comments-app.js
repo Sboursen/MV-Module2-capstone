@@ -46,8 +46,7 @@ export const createComment = (event) => {
   const form = document.querySelector('.form');
   const comBtn = document.querySelector('.form button');
   const id = Number(comBtn.id.split('-')[2]);
-  const usernameInput =
-    document.querySelector('.form .input');
+  const usernameInput = document.querySelector('.form .input');
   const commentInput = document.querySelector(
     '#modal-container .modal-items form textarea',
   );

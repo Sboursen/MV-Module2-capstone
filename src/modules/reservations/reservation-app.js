@@ -142,7 +142,6 @@ const showReservationModal = (e) => {
       reservationsPopUp.style.display = 'none';
     });
   });
-}
-
+};
 
 export default showReservationModal;

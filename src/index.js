@@ -33,7 +33,7 @@ const registerHomeEvents = () => {
   );
 
   reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
-}
+};
 
 const logoImg = document.querySelector('.logo');
 logoImg.src = Icon;
