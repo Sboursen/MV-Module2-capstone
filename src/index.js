@@ -17,28 +17,22 @@ function registerHomeEvents() {
 
   allCarsCount.textContent = getAllCarsCount();
 
-  likesButtons.forEach((likeButton) =>
-    likeButton.addEventListener(
-      'click',
-      homeApp.toggleHeart,
-    ),
-  );
+  likesButtons.forEach((likeButton) => likeButton.addEventListener(
+    'click',
+    homeApp.toggleHeart,
+  ));
 
   const commentButtons = document.querySelectorAll(
     '.car-buttons > .comment-button',
   );
 
-  commentButtons.forEach((btn) =>
-    btn.addEventListener('click', showCommentModal),
-  );
+  commentButtons.forEach((btn) => btn.addEventListener('click', showCommentModal));
 
   const reservationButtons = document.querySelectorAll(
     '.reservation-button',
   );
 
-  reservationButtons.forEach((btn) =>
-    btn.addEventListener('click', showReservationModal),
-  );
+  reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
 }
 
 const logoImg = document.querySelector('.logo');
