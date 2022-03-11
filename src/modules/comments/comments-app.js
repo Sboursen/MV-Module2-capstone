@@ -2,16 +2,15 @@ import CarsApi from '../home/cars-api';
 import CommentData from './commentData';
 import Api from './createComments';
 import commentCounter from './comment-counter';
+
 const carApi = new CarsApi();
 
-const modalContainer = document.querySelector(
-  '#modal-container',
-);
+const modalContainer = document.querySelector('#modal-container');
 
 const renderComment = (dataItem) => `<li class="text-lg">
-        <span>${dataItem['creation_date']}</span> -
-        <span class="text-slate-600 mx-2">${dataItem['username']} : </span>
-        <span>${dataItem['comment']}</span>
+        <span>${dataItem.creation_date}</span> -
+        <span class="text-slate-600 mx-2">${dataItem.username} : </span>
+        <span>${dataItem.comment}</span>
       </li>`;
 
 const displayCommentCounter = (data) => {
@@ -24,9 +23,7 @@ const displayCommentCounter = (data) => {
 };
 
 const displayComment = (data) => {
-  const CommentContainer = document.querySelector(
-    '#modal .comment-container',
-  );
+  const CommentContainer = document.querySelector('#modal .comment-container');
   if (data.length > 0) {
     let containerString = '';
     data.forEach((dataItem) => {
@@ -44,8 +41,7 @@ export const createComment = (event) => {
   const api = new Api();
   const comBtn = document.querySelector('.form button');
   const id = Number(comBtn.id.split('-')[2]);
-  const usernameInput =
-    document.querySelector('.form .input');
+  const usernameInput = document.querySelector('.form .input');
   const commentInput = document.querySelector(
     '#modal-container .modal-items form textarea',
   );
@@ -151,12 +147,11 @@ export async function showCommentModal(e) {
       displayComment(commentData);
       displayCommentCounter(commentData);
     })
-    .catch((error) => {
+    .catch((commentData) => {
       displayComment([]);
       displayCommentCounter(commentData);
     });
 
-  // close button
   const close = document.querySelector(
     '#modal-container .modal-items .img-container .close',
   );

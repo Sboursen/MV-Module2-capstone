@@ -39,9 +39,7 @@ export default class Api {
     });
   };
 
-  addComment = (bodyData) =>
-    this.#addComment(this.commentsEndpoint, bodyData);
+  addComment = (bodyData) => this.#addComment(this.commentsEndpoint, bodyData);
 
-  getComment = (id) =>
-    this.#getComment(this.commentsEndpoint, id);
+  getComment = (id) => this.#getComment(this.commentsEndpoint, id);
 }
