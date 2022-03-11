@@ -18,8 +18,7 @@ const clearInputs = () => {
     '#startDateInput',
   );
 
-  const endDateInput =
-    document.querySelector('#endDateInput');
+  const endDateInput = document.querySelector('#endDateInput');
 
   userNameInput.value = '';
   startDateInput.value = '';
@@ -36,8 +35,7 @@ const saveReservationToApi = (e) => {
     '#startDateInput',
   );
 
-  const endDateInput =
-    document.querySelector('#endDateInput');
+  const endDateInput = document.querySelector('#endDateInput');
 
   const dataBody = {
     item_id: id,
@@ -88,8 +86,8 @@ export default function showReservationModal(e) {
       <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='horsepower'>Horsepower:</h3>
          <span class="text-slate-600"> ${
-           car.horsepower
-         }</span>
+  car.horsepower
+}</span>
      </div>
      <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='price'>Price: </h3>

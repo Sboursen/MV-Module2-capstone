@@ -25,8 +25,7 @@ const getDataFromInvolvementAPI = async (id) => {
     await response.json().then((data) => {
       const counter = reservationCounter(data);
 
-      const counterContainer =
-        document.querySelector('#counter-span');
+      const counterContainer = document.querySelector('#counter-span');
       counterContainer.innerHTML = `(${counter})`;
 
       displayReserves.innerHTML = data.reduce(
