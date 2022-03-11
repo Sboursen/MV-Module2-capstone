@@ -32,23 +32,35 @@
 
 #### Use the live Website
 
-[Leaderboard Website](https://sboursen.github.io/Leaderboard/)
+[CarCollectors Website](https://sboursen.github.io/MV-Module2-capstone/)
 
 ### **Option 2**
 
 #### Set up your own copy locally
 
-- Clone [the GitHub Repository](https://github.com/Sboursen/Leaderboard)
-- Go to the Project `cd Leaderboard`
+- Clone [the GitHub Repository](https://github.com/Sboursen/MV-Module2-capstone)
+- Go to the Project `cd MV-Module2-capstone`
 - Run `npm install` to install the _dependencies_ Run `npm run start` to run the live server.
 
-## About me
+## Authors
 
 👤 **Soufiane Boursen**
 
 - GitHub: [@Sboursen](https://github.com/Sboursen)
 - Twitter: [@sboursen_dev](https://twitter.com/sboursen_dev)
 - LinkedIn: [@sboursen](https://linkedin.com/in/sboursen)
+
+👤 **Soufiane Boursen**
+
+- GitHub: [@jerryowusu](https://github.com/jerryowusu)
+- Gmail: [@sboursen_dev](jerryowusu6133@gmail.com)
+- LinkedIn: [@jeremiah-owusu](https://www.linkedin.com/in/jeremiah-owusu-b50a70173/)
+
+👤 **Mwafrika Josué**
+
+- GitHub: [@mwafrika](https://github.com/mwafrika)
+- Gmail: [@mwafrika](mwafrikajosue@gmail.com)
+- LinkedIn: [@mwafrika-mufungizi](https://www.linkedin.com/in/mwafrika-mufungizi/)
 
 ## Contributors
 
@@ -62,6 +74,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
+- [Cars API](https://carsapi1.docs.apiary.io/#reference/0/cars-collection)
+- [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270)
 
 ## 📝 License
 
