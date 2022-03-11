@@ -1,10 +1,28 @@
-const modules = require('../modules/reservations/reservation-counter');
+import reservationCounter from '../modules/reservations/reservation-counter';
 
-describe('String Tests', () => {
-  test('Get String Length',
-    () => expect(modules.stringLength('hello')).toBe(5));
+describe('Test length of an array', () => {
+  test('Test array should return Length in number', () => {
+    const array = ['jerry', 'sbourne', 'nwafrika'];
+    expect(reservationCounter(array)).not.toEqual(array);
+  });
 
-  test('String Length less than 1', () => {
-    expect(() => modules.stringLength('')).toThrowError('String is empty');
+  test('Get array Length', () => {
+    const array = ['jerry', 'sbourne', 'nwafrika'];
+    expect(reservationCounter(array)).toBe(3);
+  });
+
+  test('Get array Length', () => {
+    const array = ['jerry', 'sbourne', 'nwafrika', 123, 'osborne', 'esther'];
+    expect(reservationCounter(array)).toBe(6);
+  });
+
+  test('Get array Length', () => {
+    const array = ['Jane'];
+    expect(reservationCounter(array)).toBe(1);
+  });
+
+  test('Get empty array Length', () => {
+    const array = [];
+    expect(reservationCounter(array)).toBe(0);
   });
 });
