@@ -29,9 +29,12 @@ const saveReservationToApi = (e) => {
   };
 
   setReservedToAPI(dataBody);
+
   userNameInput.value = '';
   startDateInput.value = '';
   endDateInput.value = '';
+
+  getDataFromInvolvementAPI(dataBody);
 };
 
 export default function showReservationModal(e) {
