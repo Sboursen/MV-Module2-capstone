@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# LeaderBoard
+# MV-Module2-capstone
 
 > **CarCollectors** is website for customers who want to rent a car. It allows the visitor to browse an extensive collection of beautiful cars using the [Cars API](https://carsapi1.docs.apiary.io/#reference/0/cars-collection). It also allows the user to like, comment and make a reservation for a given car. All data are saved using the [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270).
 
