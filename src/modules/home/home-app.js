@@ -87,7 +87,7 @@ export class HomeApplication {
   };
 }
 
-export function getAllCarsCount() {
+export const getAllCarsCount = () => {
   const main = document.querySelector('main');
   return main.childElementCount;
-}
+};

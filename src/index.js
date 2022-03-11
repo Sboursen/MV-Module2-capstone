@@ -9,7 +9,7 @@ import Icon from './images/logo.png';
 
 const homeApp = new HomeApplication();
 
-function registerHomeEvents() {
+const registerHomeEvents = () => {
   const likesButtons = document.querySelectorAll('.heart');
   const allCarsCount = document.querySelector(
     '.cars-nav-element',
@@ -33,7 +33,7 @@ function registerHomeEvents() {
   );
 
   reservationButtons.forEach((btn) => btn.addEventListener('click', showReservationModal));
-}
+};
 
 const logoImg = document.querySelector('.logo');
 logoImg.src = Icon;

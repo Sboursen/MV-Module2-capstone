@@ -29,14 +29,14 @@ export const carRender = (
       </div>
     </div>`;
 
-export function fileExists(imageUrl) {
+export const fileExists = (imageUrl) => {
   const http = new XMLHttpRequest();
 
   http.open('HEAD', imageUrl, false);
   http.send();
 
   return Number(http.status) !== 404;
-}
+};
 
 export const goodCarsId = [
   1, 5, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 25,

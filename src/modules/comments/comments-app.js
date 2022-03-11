@@ -5,7 +5,9 @@ import commentCounter from './comment-counter';
 
 const carApi = new CarsApi();
 
-const modalContainer = document.querySelector('#modal-container');
+const modalContainer = document.querySelector(
+  '#modal-container',
+);
 
 const renderComment = (dataItem) => `<li class="text-lg">
         <span>${dataItem.creation_date}</span> -
@@ -23,7 +25,9 @@ const displayCommentCounter = (data) => {
 };
 
 const displayComment = (data) => {
-  const CommentContainer = document.querySelector('#modal .comment-container');
+  const CommentContainer = document.querySelector(
+    '#modal .comment-container',
+  );
   if (data.length > 0) {
     let containerString = '';
     data.forEach((dataItem) => {
@@ -61,7 +65,7 @@ export const createComment = (event) => {
   form.reset();
 };
 
-export async function showCommentModal(e) {
+export const showCommentModal = async (e) => {
   const id = Number(e.target.parentNode.parentNode.id);
   await carApi.getDataPromise().then((data) => {
     if (modalContainer.classList.contains('hidden')) {
@@ -161,4 +165,4 @@ export async function showCommentModal(e) {
     modalContainer.classList.add('hidden');
     modalContainer.classList.remove('show');
   });
-}
+};
