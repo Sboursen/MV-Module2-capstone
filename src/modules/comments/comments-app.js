@@ -61,7 +61,7 @@ export const createComment = (event) => {
   form.reset();
 };
 
-export async function showCommentModal(e) {
+export async showCommentModal = (e) => {
   const id = Number(e.target.parentNode.parentNode.id);
   await carApi.getDataPromise().then((data) => {
     if (modalContainer.classList.contains('hidden')) {

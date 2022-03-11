@@ -29,7 +29,7 @@ export const carRender = (
       </div>
     </div>`;
 
-export function fileExists(imageUrl) {
+export const fileExists = (imageUrl) => {
   const http = new XMLHttpRequest();
 
   http.open('HEAD', imageUrl, false);

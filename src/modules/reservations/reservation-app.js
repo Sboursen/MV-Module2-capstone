@@ -50,7 +50,7 @@ const saveReservationToApi = (e) => {
   });
 };
 
-export default function showReservationModal(e) {
+const showReservationModal = (e) => {
   const id = Number(e.target.parentNode.parentNode.id);
 
   carApi.getDataPromise().then((data) => {
@@ -143,3 +143,6 @@ export default function showReservationModal(e) {
     });
   });
 }
+
+
+export default showReservationModal;
