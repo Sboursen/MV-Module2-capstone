@@ -1,6 +1,8 @@
 module.exports = {
   extends: ['stylelint-config-standard'],
   rules: {
+    'function-url-quotes': null,
+    'function-no-unknown': null,
     'at-rule-no-unknown': [
       true,
       {
