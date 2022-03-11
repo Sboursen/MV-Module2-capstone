@@ -12,7 +12,8 @@
     "lintFix:js": "eslint ./src/**/*.js --fix",
     "lintFix:css": "stylelint ./src/*.{css,scss} --fix",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
