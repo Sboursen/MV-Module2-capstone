@@ -91,7 +91,7 @@ export default function showReservationModal(e) {
      </div>
      <div class='w-2/5 flex text-lg justify-center gap-x-4'>
          <h3 class='price'>Price: </h3>
-         <span class="text-slate-600"> $ ${car.price}</span>
+         <span class="text-slate-600">$${car.price}</span>
      </div>
      </div>
     <div class="reserved-cars-container ml-3">

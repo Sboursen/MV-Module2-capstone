@@ -103,7 +103,7 @@ export async function showCommentModal(e) {
         </div>
         <div class="w-2/5 flex text-lg justify-center gap-x-4">
           <h3>Price</h3>
-          <span class="text-slate-600">$ ${data[id].price}</span>
+          <span class="text-slate-600">$${data[id].price}</span>
         </div>
       </div>
     </div>
