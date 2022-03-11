@@ -76,6 +76,7 @@ Give a ⭐️ if you like this project!
 
 - [Cars API](https://carsapi1.docs.apiary.io/#reference/0/cars-collection)
 - [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270)
+- [Logo Generator](https://inkpx.com/word-art-generator)
 
 ## 📝 License
 
